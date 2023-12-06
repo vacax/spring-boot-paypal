@@ -12,13 +12,16 @@ import java.util.logging.Logger;
 @Component
 public class BootStrap implements ApplicationRunner {
 
-    Logger logger =  Logger.getLogger(BootStrap.class.getName());
-    @Autowired
+    private Logger logger =  Logger.getLogger(BootStrap.class.getName());
     private ParametroRepository parametroRepository;
+
+    public BootStrap(ParametroRepository parametroRepository) {
+        this.parametroRepository = parametroRepository;
+    }
 
     @Override
     public void run(ApplicationArguments args) {
         logger.info("Iniciando Aplicación Spring Boot Paypal");
-        parametroRepository.save(new Parametro(1, "CUENTA_NEGOCIO_PAYPAL", "vendedor@iapucmm.com"));
+        parametroRepository.save(new Parametro(1, "CUENTA_NEGOCIO_PAYPAL", "sb-vov4f28609475@business.example.com"));
     }
 }
